@@ -5,18 +5,23 @@
  * @license BSD 3-Clause License
  */
 
-namespace ymaker\banner\tests\unit;
+namespace ymaker\banner\backend\exceptions;
+
+use yii\base\Exception;
 
 /**
- * Base test case class.
+ * File upload exception.
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @since 1.0
  */
-class TestCase extends \Codeception\Test\Unit
+class FileUploadException extends Exception
 {
     /**
-     * @var \UnitTester
+     * @inheritdoc
      */
-    protected $tester;
+    public function getName()
+    {
+        return 'File upload exception';
+    }
 }

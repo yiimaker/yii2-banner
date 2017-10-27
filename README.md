@@ -30,6 +30,11 @@ or add
 ```
 to the require section of your `composer.json` file.
 
+Apply migrations
+```bash
+$ ./yii migrate --migrationPath=@vendor/yiimaker/yii2-banner/src/migrations
+```
+
 Usage
 -----
 
