@@ -20,6 +20,8 @@ use ymaker\banner\backend\Module as BannerModule;
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @since 1.0
  */
+
+\yii\bootstrap\BootstrapAsset::register($this);
 ?>
 <div class="container">
     <div class="row">
