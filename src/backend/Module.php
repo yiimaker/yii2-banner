@@ -31,15 +31,15 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'ymaker\banner\backend\controllers';
 
     /**
-     * @var \motion\i18n\LanguageProviderInterface
+     * @var array
      */
     private $_languageProvider;
     /**
-     * @var FileManagerInterface
+     * @var array
      */
     private $_fileManager;
     /**
-     * @var BannerServiceInterface
+     * @var array
      */
     private $_service;
 
@@ -61,7 +61,7 @@ class Module extends \yii\base\Module
     }
 
     /**
-     * @param BannerServiceInterface $service
+     * @param array $service
      */
     public function setService($service)
     {

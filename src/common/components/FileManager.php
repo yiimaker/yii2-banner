@@ -77,18 +77,20 @@ class FileManager extends Object implements FileManagerInterface
 
     /**
      * @inheritdoc
+     * @return bool|string
      */
     public function getImageSrc($fileName)
     {
-        return Yii::getAlias($this->filesRoot . '/' . $fileName);
+        return Yii::getAlias($this->filesRoot . '/' . $fileName, false);
     }
 
     /**
      * @inheritdoc
+     * @return bool|string
      */
     public function getImageUrl($fileName)
     {
-        return Yii::getAlias($this->filesBaseUrl . '/' . $fileName);
+        return Yii::getAlias($this->filesBaseUrl . '/' . $fileName, false);
     }
 
     /**

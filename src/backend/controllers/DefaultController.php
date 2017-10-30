@@ -28,7 +28,7 @@ class DefaultController extends Controller
 
     /**
      * @inheritdoc
-     * @param BannerService $service
+     * @param BannerServiceInterface $service
      */
     public function __construct($id, $module, BannerServiceInterface $service, $config = [])
     {
@@ -51,7 +51,7 @@ class DefaultController extends Controller
     /**
      * Creates new banner.
      *
-     * @return string
+     * @return string|\yii\web\Response
      */
     public function actionCreate()
     {

@@ -101,7 +101,7 @@ class BannerService extends Object implements BannerServiceInterface
      */
     public function getModel($id = null)
     {
-        if ($id == null) {
+        if ($id === null) {
             $model = new Banner();
             $model->loadDefaultValues();
             $this->_model = $model;
@@ -202,6 +202,6 @@ class BannerService extends Object implements BannerServiceInterface
                 Yii::trace('Cannot delete "' . $translation->file_name . '" file', 'yii2-banner');
             }
         }
-        return $model->delete();
+        return (bool)$model->delete();
     }
 }

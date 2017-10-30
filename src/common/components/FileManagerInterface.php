@@ -27,7 +27,7 @@ interface FileManagerInterface
      * Returns source of image.
      *
      * @param string $fileName
-     * @return string
+     * @return mixed
      */
     public function getImageSrc($fileName);
 
@@ -35,7 +35,7 @@ interface FileManagerInterface
      * Returns URL to image.
      *
      * @param string $fileName
-     * @return string
+     * @return mixed
      */
     public function getImageUrl($fileName);
 

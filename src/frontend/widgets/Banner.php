@@ -28,7 +28,7 @@ class Banner extends Widget
      */
     protected $countViews = true;
     /**
-     * @var BannerEntity
+     * @var BannerEntity|null
      */
     protected $model;
 
