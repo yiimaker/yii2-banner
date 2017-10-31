@@ -77,4 +77,16 @@ class Banner extends ActiveRecord
     {
         return $this->hasMany(BannerTranslation::class, ['banner_id' => 'id']);
     }
+
+    /**
+     * Increments views counter.
+     */
+    public function incrementViewsCounter()
+    {
+        self::updateAllCounters(
+            ['views_count' => 1],
+            'slug = :slug',
+            [':slug' => $this->slug]
+        );
+    }
 }

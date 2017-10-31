@@ -17,7 +17,6 @@ use yii\web\UploadedFile;
 use ymaker\banner\backend\exceptions\FileUploadException;
 use ymaker\banner\backend\models\entities\Banner;
 use ymaker\banner\backend\models\entities\BannerTranslation;
-use ymaker\banner\backend\Module;
 use ymaker\banner\common\components\FileManager;
 
 /**
@@ -138,53 +137,48 @@ class BannerService extends Object implements BannerServiceInterface
     }
 
     /**
-     * Save data to database.
+     * Save banner to database.
      *
      * @param array $data
-     * @return bool
+     * @throws FileUploadException
+     * @throws \DomainException
+     * @throws \RuntimeException
      */
-    protected function save(array $data)
+    protected function saveInternal(array $data)
     {
         if (!$this->_model->load($data)) {
-            Yii::trace('Cannot load data to primary model', 'yii2-banner');
-        } else {
-            try {
-                foreach ($data[BannerTranslation::internalFormName()] as $language => $dataSet) {
-                    $model = $this->_model->getTranslation($language);
-                    $model->file_name = $this->saveUploadedFile($model);
-                    foreach ($dataSet as $attribute => $translation) {
-                        $model->$attribute = $translation;
-                    }
-                }
-                return $this->_model->save();
-            } catch (\Exception $ex) {
-                Yii::trace($ex, 'yii2-banner');
+            throw new \DomainException('Cannot load data to primary model');
+        }
+
+        foreach ($data[BannerTranslation::internalFormName()] as $language => $dataSet) {
+            $model = $this->_model->getTranslation($language);
+            $model->file_name = $this->saveUploadedFile($model);
+            foreach ($dataSet as $attribute => $translation) {
+                $model->$attribute = $translation;
             }
         }
 
+        if (!$this->_model->save()) {
+            throw new \RuntimeException();
+        }
+    }
+
+    /**
+     * Save banner and log exceptions.
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function save(array $data)
+    {
+        try {
+            $this->saveInternal($data);
+            return true;
+        } catch (\Exception $ex) {
+            Yii::$app->getErrorHandler()->logException($ex);
+        }
+
         return false;
-    }
-
-    /**
-     * Creates banner.
-     *
-     * @param array $data
-     * @return bool
-     */
-    public function create(array $data)
-    {
-        return $this->save($data);
-    }
-
-    /**
-     * Updates banner.
-     *
-     * @param array $data
-     * @return bool
-     */
-    public function update(array $data)
-    {
-        return (bool)$this->save($data);
     }
 
     /**
@@ -196,12 +190,18 @@ class BannerService extends Object implements BannerServiceInterface
      */
     public function delete($id)
     {
-        $model = $this->findModel($id);
-        foreach ($model->translations as $translation) {
-            if (!$this->_fileManager->deleteFile($translation->file_name)) {
-                Yii::trace('Cannot delete "' . $translation->file_name . '" file', 'yii2-banner');
+        try {
+            $model = $this->findModel($id);
+            foreach ($model->translations as $translation) {
+                if (!$this->_fileManager->deleteFile($translation->file_name)) {
+                    Yii::trace('Cannot delete "' . $translation->file_name . '" file', 'yii2-banner');
+                }
             }
+            return (bool)$model->delete();
+        } catch (\Exception $ex) {
+            Yii::$app->getErrorHandler()->logException($ex);
         }
-        return (bool)$model->delete();
+
+        return false;
     }
 }

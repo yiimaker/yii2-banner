@@ -9,7 +9,6 @@ namespace ymaker\banner\backend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use ymaker\banner\backend\services\BannerService;
 use ymaker\banner\backend\services\BannerServiceInterface;
 
 /**
@@ -55,13 +54,7 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $model = $this->_service->getModel();
-        $request = Yii::$app->getRequest();
-        if ($request->getIsPost() && $this->_service->create($request->post())) {
-            return $this->redirect(['index']);
-        }
-
-        return $this->render('create', compact('model'));
+        return $this->commonAction($this->redirect(['index']), 'index');
     }
 
     /**
@@ -72,13 +65,25 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->_service->getModel($id);
+        return $this->commonAction($this->redirect(['view', 'id' => $id]), 'update');
+    }
+
+    /**
+     * Common code for create and update actions.
+     *
+     * @param \yii\web\Response $redirect
+     * @param string $view
+     * @return string
+     */
+    protected function commonAction($redirect, $view)
+    {
+        $model = $this->_service->getModel();
         $request = Yii::$app->getRequest();
-        if ($request->getIsPost() && $this->_service->update($request->post())) {
-            return $this->redirect(['view', 'id' => $id]);
+        if ($request->getIsPost() && $this->_service->save($request->post())) {
+            return $redirect;
         }
 
-        return $this->render('update', compact('model'));
+        return $this->render($view, compact('model'));
     }
 
     /**
@@ -101,10 +106,11 @@ class DefaultController extends Controller
      */
     public function actionDelete($id)
     {
-        $message = $this->_service->delete($id)
-            ? 'Removed successfully'
-            : 'Error: banner not removed';
-        Yii::$app->getSession()->setFlash('yii2-banner', compact('message'));
+        $message = 'Error: banner not removed';
+        if ($this->_service->delete($id)) {
+            $message = 'Removed successfully';
+        }
+        Yii::$app->getSession()->setFlash('yii2-banner', $message);
 
         return $this->redirect(['index']);
     }

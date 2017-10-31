@@ -79,24 +79,12 @@ class Banner extends Widget
         if (empty($this->model)) {
             return null;
         }
+        if ($this->countViews) {
+            $this->model->incrementViewsCounter();
+        }
 
-        $this->incrementCounter();
         return $this->render('banner', [
             'model' => $this->model,
         ]);
-    }
-
-    /**
-     * Increment views counter for banner.
-     */
-    protected function incrementCounter()
-    {
-        if ($this->countViews) {
-            BannerEntity::updateAllCounters(
-                ['views_count' => 1],
-                'slug = :slug',
-                [':slug' => $this->slug]
-            );
-        }
     }
 }

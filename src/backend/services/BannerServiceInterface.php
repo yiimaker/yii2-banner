@@ -31,20 +31,12 @@ interface BannerServiceInterface
     public function getModel($id = null);
 
     /**
-     * Creates record.
+     * Save record.
      *
      * @param array $data
      * @return bool
      */
-    public function create(array $data);
-
-    /**
-     * Updates record.
-     *
-     * @param array $data
-     * @return bool
-     */
-    public function update(array $data);
+    public function save(array $data);
 
     /**
      * Removes record.
