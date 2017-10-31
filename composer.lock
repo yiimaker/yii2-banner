@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "136d62ce53205452beba75552ba8749b",
-    "content-hash": "b02555c18dfafedb311591c823dfefc8",
+    "hash": "2db298457621a9140d48fdc0c95b0d65",
+    "content-hash": "f33898b638e6f6fb12374199f59a89a7",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -169,6 +169,50 @@
             "time": "2017-07-16 21:13:23"
         },
         {
+            "name": "creocoder/yii2-translateable",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creocoder/yii2-translateable.git",
+                "reference": "a8ceca0a2b55c7087f46e3ffd57103172520f849"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creocoder/yii2-translateable/zipball/a8ceca0a2b55c7087f46e3ffd57103172520f849",
+                "reference": "a8ceca0a2b55c7087f46e3ffd57103172520f849",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "phpunit/dbunit": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "creocoder\\translateable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kochetov",
+                    "email": "creocoder@gmail.com"
+                }
+            ],
+            "description": "The translateable behavior for the Yii framework",
+            "keywords": [
+                "translateable",
+                "yii2"
+            ],
+            "time": "2015-02-26 03:19:24"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.9.3",
             "source": {
@@ -221,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/motion-web-production/yii2-language-provider.git",
-                "reference": "a3fccb0e4a536dbab2a06464b2907b5dcd11e3eb"
+                "reference": "64a763320f60dcbe6984c01b1629e1a4c30954ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motion-web-production/yii2-language-provider/zipball/a3fccb0e4a536dbab2a06464b2907b5dcd11e3eb",
-                "reference": "a3fccb0e4a536dbab2a06464b2907b5dcd11e3eb",
+                "url": "https://api.github.com/repos/motion-web-production/yii2-language-provider/zipball/64a763320f60dcbe6984c01b1629e1a4c30954ae",
+                "reference": "64a763320f60dcbe6984c01b1629e1a4c30954ae",
                 "shasum": ""
             },
             "require": {
@@ -261,7 +305,7 @@
                 "provider",
                 "yii2"
             ],
-            "time": "2017-10-17 14:24:31"
+            "time": "2017-10-30 13:09:52"
         },
         {
             "name": "yiisoft/yii2",
