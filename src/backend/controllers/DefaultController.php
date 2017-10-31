@@ -73,7 +73,7 @@ class DefaultController extends Controller
      *
      * @param \yii\web\Response $redirect
      * @param string $view
-     * @return string
+     * @return string|\yii\web\Response
      */
     protected function commonAction($redirect, $view)
     {

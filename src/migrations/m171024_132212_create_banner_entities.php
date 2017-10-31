@@ -68,6 +68,8 @@ class m171024_132212_create_banner_entities extends Migration
 
                 'file_name' => $this->string()->notNull(),
                 'alt'       => $this->string()->null(),
+
+                'link'      => $this->string()->notNull()->defaultValue('#'),
             ],
             $tableOptions
         );

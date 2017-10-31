@@ -57,6 +57,7 @@ use ymaker\banner\backend\Module as BannerModule;
                 'attributes' => [
                     'slug',
                     'content',
+                    'link:url',
                     [
                         'attribute' => 'file_name',
                         'label' => BannerModule::t('Banner image'),

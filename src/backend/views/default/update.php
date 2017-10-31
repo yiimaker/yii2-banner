@@ -41,6 +41,7 @@ use ymaker\banner\backend\Module as BannerModule;
                 <?php $translation = $model->getTranslation($language) ?>
                 <?= $form->field($translation, 'content')->textarea() ?>
                 <?= $form->field($translation, 'hint') ?>
+                <?= $form->field($translation, 'link') ?>
                 <img src="<?= ImageHelper::getUrl($translation->file_name) ?>" alt="" width="300">
                 <?= $form->field($translation, 'imageFile')->fileInput() ?>
                 <?= $form->field($translation, 'alt') ?>

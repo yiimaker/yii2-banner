@@ -59,6 +59,11 @@ class BannerTranslation extends CommonBannerTranslation
 
             ['file_name', 'string', 'max' => 255],
 
+            ['alt', 'string', 'max' => 255],
+
+            ['link', 'string', 'max' => 255],
+            ['link', 'default', 'value' => '#'],
+
             ['imageFile', 'file', 'extensions' => 'png, jpg, gif, svg'],
         ];
     }
@@ -72,6 +77,7 @@ class BannerTranslation extends CommonBannerTranslation
             'content'   => BannerModule::t('Content'),
             'hint'      => BannerModule::t('Hint'),
             'alt'       => BannerModule::t('Alt'),
+            'link'      => BannerModule::t('Link'),
             'imageFile' => BannerModule::t('Banner image'),
         ];
 

@@ -19,6 +19,7 @@ use yii\db\ActiveRecord;
  * @property string $hint
  * @property string $file_name
  * @property string $alt
+ * @property string $link
  *
  * @property Banner $banner
  *

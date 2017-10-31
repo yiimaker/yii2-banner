@@ -26,6 +26,7 @@ use creocoder\translateable\TranslateableBehavior;
  * @property string $content
  * @property string $file_name
  * @property string $alt
+ * @property string $link
  *
  * @method BannerTranslation getTranslation($language = null)
  *
@@ -67,6 +68,7 @@ class Banner extends ActiveRecord
             'hint',
             'alt',
             'file_name',
+            'link',
         ];
     }
 
