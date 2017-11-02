@@ -8,5 +8,6 @@
 return [
     1 => [
         'slug' => 'test-banner',
+        'views_count' => 0,
     ],
 ];
