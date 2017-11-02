@@ -22,6 +22,8 @@ use ymaker\banner\backend\Module as BannerModule;
  */
 
 \yii\bootstrap\BootstrapAsset::register($this);
+
+$f = Yii::$app->getFormatter();
 ?>
 <div class="container">
     <div class="row">
@@ -46,6 +48,14 @@ use ymaker\banner\backend\Module as BannerModule;
                 <?= $form->field($translation, 'imageFile')->fileInput() ?>
                 <?= $form->field($translation, 'alt') ?>
             <?php endforeach ?>
+            <?= $form->field($model, 'valid_from')->textInput([
+                'type' => 'date',
+                'value' => $f->asDate($model->valid_from, 'y-M-dd'),
+            ]) ?>
+            <?= $form->field($model, 'valid_util')->textInput([
+                'type' => 'date',
+                'value' => $f->asDate($model->valid_until, 'y-M-dd'),
+            ]) ?>
             <?= $form->field($model, 'published')->checkbox() ?>
             <?= Html::submitButton(
                 BannerModule::t('Save'),

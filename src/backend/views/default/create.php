@@ -40,6 +40,8 @@ use ymaker\banner\backend\Module as BannerModule;
                 <?= $form->field($translation, 'imageFile')->fileInput() ?>
                 <?= $form->field($translation, 'alt') ?>
             <?php endforeach ?>
+            <?= $form->field($model, 'valid_from')->textInput(['type' => 'date']) ?>
+            <?= $form->field($model, 'valid_until')->textInput(['type' => 'date']) ?>
             <?= $form->field($model, 'published')->checkbox() ?>
             <?= Html::submitButton(
                 BannerModule::t('Create'),
