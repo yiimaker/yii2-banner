@@ -62,7 +62,7 @@ class Banner extends CommonBanner
             ['views_count', 'integer'],
             ['views_count', 'default', 'value' => 0],
 
-            [['create_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
 
             [['valid_from', 'valid_until'], 'safe'],
         ];

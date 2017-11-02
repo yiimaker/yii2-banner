@@ -17,7 +17,7 @@ use yii\web\UploadedFile;
 use ymaker\banner\backend\exceptions\FileUploadException;
 use ymaker\banner\backend\models\entities\Banner;
 use ymaker\banner\backend\models\entities\BannerTranslation;
-use ymaker\banner\common\components\FileManager;
+use ymaker\banner\common\components\FileManagerInterface;
 
 /**
  * Service for banner.
@@ -32,7 +32,7 @@ class BannerService extends Object implements BannerServiceInterface
      */
     private $_db = 'db';
     /**
-     * @var FileManager
+     * @var FileManagerInterface
      */
     private $_fileManager;
     /**
@@ -43,9 +43,9 @@ class BannerService extends Object implements BannerServiceInterface
 
     /**
      * @inheritdoc
-     * @param FileManager $fileManager
+     * @param FileManagerInterface $fileManager
      */
-    public function __construct(FileManager $fileManager, $config = [])
+    public function __construct(FileManagerInterface $fileManager, $config = [])
     {
         $this->_fileManager = $fileManager;
         parent::__construct($config);
@@ -149,7 +149,6 @@ class BannerService extends Object implements BannerServiceInterface
         if (!$this->_model->load($data)) {
             throw new \DomainException('Cannot load data to primary model');
         }
-
         foreach ($data[BannerTranslation::internalFormName()] as $language => $dataSet) {
             $model = $this->_model->getTranslation($language);
             $model->file_name = $this->saveUploadedFile($model);
@@ -190,8 +189,8 @@ class BannerService extends Object implements BannerServiceInterface
      */
     public function delete($id)
     {
+        $model = $this->findModel($id);
         try {
-            $model = $this->findModel($id);
             foreach ($model->translations as $translation) {
                 if (!$this->_fileManager->deleteFile($translation->file_name)) {
                     Yii::trace('Cannot delete "' . $translation->file_name . '" file', 'yii2-banner');
