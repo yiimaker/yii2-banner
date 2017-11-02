@@ -25,14 +25,6 @@ class BannerTranslation extends CommonBannerTranslation
 
 
     /**
-     * @inheritdoc
-     */
-    public function formName()
-    {
-        return parent::formName() . '[' . $this->language . ']';
-    }
-
-    /**
      * Returns internal form name.
      *
      * @return string
@@ -41,6 +33,14 @@ class BannerTranslation extends CommonBannerTranslation
     {
         $reflector = new \ReflectionClass(self::class);
         return $reflector->getShortName();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function formName()
+    {
+        return parent::formName() . '[' . $this->language . ']';
     }
 
     /**

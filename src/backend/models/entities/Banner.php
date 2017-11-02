@@ -30,20 +30,20 @@ class Banner extends CommonBanner
     /**
      * @inheritdoc
      */
-    public function loadDefaultValues($skipIfSet = true)
-    {
-        $this->slug = 'banner-' . (self::find()->count() + 1);
-        return parent::loadDefaultValues($skipIfSet);
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['timestamp'] = TimestampBehavior::class;
         return $behaviors;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function loadDefaultValues($skipIfSet = true)
+    {
+        $this->slug = 'banner-' . (self::find()->count() + 1);
+        return parent::loadDefaultValues($skipIfSet);
     }
 
     /**
