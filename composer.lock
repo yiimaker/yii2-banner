@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2db298457621a9140d48fdc0c95b0d65",
-    "content-hash": "f33898b638e6f6fb12374199f59a89a7",
+    "hash": "6653d6b90993e4372db8d4c902c69a8d",
+    "content-hash": "5fdd6401a1aa9a7f28583a99dc3c9a9a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -261,25 +261,30 @@
         },
         {
             "name": "motion/yii2-language-provider",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/motion-web-production/yii2-language-provider.git",
-                "reference": "64a763320f60dcbe6984c01b1629e1a4c30954ae"
+                "reference": "44bdaa3e188d11f571b654c571bcc7e61ece8901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/motion-web-production/yii2-language-provider/zipball/64a763320f60dcbe6984c01b1629e1a4c30954ae",
-                "reference": "64a763320f60dcbe6984c01b1629e1a4c30954ae",
+                "url": "https://api.github.com/repos/motion-web-production/yii2-language-provider/zipball/44bdaa3e188d11f571b654c571bcc7e61ece8901",
+                "reference": "44bdaa3e188d11f571b654c571bcc7e61ece8901",
                 "shasum": ""
             },
             "require": {
                 "yiisoft/yii2": "~2.0"
             },
+            "require-dev": {
+                "codeception/codeception": "~2.3",
+                "codeception/specify": "*",
+                "codeception/verify": "*"
+            },
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.0-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -298,14 +303,14 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Language provider for Yii2",
+            "description": "Language providers kit for modules based on Yii2 Framework",
             "keywords": [
                 "i18n",
                 "language",
                 "provider",
                 "yii2"
             ],
-            "time": "2017-10-30 13:09:52"
+            "time": "2017-11-02 09:40:23"
         },
         {
             "name": "yiisoft/yii2",
@@ -3129,9 +3134,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "motion/yii2-language-provider": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
