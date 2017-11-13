@@ -54,7 +54,7 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        return $this->commonAction(['index'], 'create');
+        return $this->commonAction($this->_service->getModel(), ['index'], 'create');
     }
 
     /**
@@ -65,19 +65,23 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        return $this->commonAction(['view', 'id' => $id], 'update');
+        return $this->commonAction(
+            $this->_service->getModel($id),
+            ['view', 'id' => $id],
+            'update'
+        );
     }
 
     /**
      * Common code for create and update actions.
      *
+     * @param \yii\db\ActiveRecord $model
      * @param array $redirectUrl
      * @param string $view
      * @return string|\yii\web\Response
      */
-    protected function commonAction($redirectUrl, $view)
+    protected function commonAction($model, $redirectUrl, $view)
     {
-        $model = $this->_service->getModel();
         $request = Yii::$app->getRequest();
         if ($request->getIsPost() && $this->_service->save($request->post())) {
             return $this->redirect($redirectUrl);
