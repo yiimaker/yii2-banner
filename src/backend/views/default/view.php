@@ -67,6 +67,7 @@ use ymaker\banner\backend\Module as BannerModule;
                         }
                     ],
                     'alt',
+                    'views_count',
                     [
                         'attribute' => 'valid_from',
                         'format' => ['date', 'y-M-dd'],
@@ -75,9 +76,6 @@ use ymaker\banner\backend\Module as BannerModule;
                         'attribute' => 'valid_until',
                         'format' => ['date', 'y-M-dd'],
                     ],
-                    'views_count',
-                    'valid_from:datetime',
-                    'valid_until:datetime',
                     'published:boolean',
                     'created_at:datetime',
                     'updated_at:datetime',
