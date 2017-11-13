@@ -13,8 +13,6 @@ use motion\i18n\LanguageProviderInterface;
 use ymaker\banner\backend\Module;
 use ymaker\banner\backend\services\BannerService;
 use ymaker\banner\backend\services\BannerServiceInterface;
-use ymaker\banner\common\components\FileManager;
-use ymaker\banner\common\components\FileManagerInterface;
 use ymaker\banner\tests\unit\TestCase;
 
 /**
@@ -25,15 +23,6 @@ use ymaker\banner\tests\unit\TestCase;
  */
 class ModuleTest extends TestCase
 {
-    /**
-     * @inheritdoc
-     */
-    protected function _before()
-    {
-        Yii::setAlias('@web/uploads/banners', '@tests/_output');
-        Yii::setAlias('@webroot/uploads/banners', '@tests/_output');
-    }
-
     /**
      * @expectedException \yii\base\InvalidConfigException
      */
@@ -55,10 +44,6 @@ class ModuleTest extends TestCase
         $this->assertInstanceOf(
             LanguageProviderInterface::class,
             Yii::$container->get(LanguageProviderInterface::class)
-        );
-        $this->assertInstanceOf(
-            FileManager::class,
-            Yii::$container->get(FileManagerInterface::class)
         );
         $this->assertInstanceOf(
             BannerService::class,

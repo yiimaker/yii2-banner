@@ -7,7 +7,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use ymaker\banner\backend\helpers\ImageHelper;
+use ymaker\banner\common\helpers\ImageHelper;
 use ymaker\banner\backend\helpers\LanguageHelper;
 use ymaker\banner\backend\Module as BannerModule;
 

@@ -7,7 +7,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use ymaker\banner\backend\helpers\ImageHelper;
+use ymaker\banner\common\helpers\ImageHelper;
 use ymaker\banner\backend\models\entities\Banner;
 use ymaker\banner\backend\Module as BannerModule;
 

@@ -5,7 +5,7 @@
  * @license BSD 3-Clause License
  */
 
-use ymaker\banner\backend\helpers\ImageHelper;
+use ymaker\banner\common\helpers\ImageHelper;
 
 /**
  * View file used by banner widget.

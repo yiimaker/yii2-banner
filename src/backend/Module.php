@@ -18,7 +18,8 @@ use ymaker\banner\common\components\FileManagerInterface;
 /**
  * Backend banner module definition class.
  *
- * @property \motion\i18n\LanguageProviderInterface $languageProvider
+ * @property-write array $languageProvider
+ * @property-write array $service
  *
  * @author Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
  * @since 1.0
@@ -37,10 +38,6 @@ class Module extends \yii\base\Module
     /**
      * @var array
      */
-    private $_fileManager;
-    /**
-     * @var array
-     */
     private $_service;
 
 
@@ -50,14 +47,6 @@ class Module extends \yii\base\Module
     public function setLanguageProvider(array $providerConfig)
     {
         $this->_languageProvider = $providerConfig;
-    }
-
-    /**
-     * @param array $fileManagerConfig
-     */
-    public function setFileManager(array $fileManagerConfig)
-    {
-        $this->_fileManager = $fileManagerConfig;
     }
 
     /**
@@ -76,9 +65,6 @@ class Module extends \yii\base\Module
         if (empty($this->_languageProvider)) {
             throw new InvalidConfigException('You should configure language provider');
         }
-        if (empty($this->_fileManager)) {
-            $this->_fileManager = ['class' => FileManager::class];
-        }
         if (empty($this->_service)) {
             $this->_service = ['class' => BannerService::class];
         }
@@ -93,7 +79,6 @@ class Module extends \yii\base\Module
     {
         Yii::$container->setDefinitions([
             LanguageProviderInterface::class => $this->_languageProvider,
-            FileManagerInterface::class => $this->_fileManager,
             BannerServiceInterface::class => $this->_service,
         ]);
     }

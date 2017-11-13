@@ -9,6 +9,10 @@ return [
 
     'bootstrap' => [],
 
+    'aliases' => [
+        '@webroot/uploads/banners' => '@data/files',
+    ],
+
     'components' => [
         'db' => [
             'class' => \yii\db\Connection::class,
@@ -16,6 +20,13 @@ return [
             'username' => '',
             'password' => '',
             'charset' => 'utf8',
+        ],
+    ],
+
+    'container' => [
+        'definitions' => [
+            \ymaker\banner\common\components\FileManagerInterface::class =>
+            \ymaker\banner\common\components\FileManager::class,
         ],
     ],
 ];

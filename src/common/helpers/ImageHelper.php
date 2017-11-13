@@ -5,7 +5,7 @@
  * @license BSD 3-Clause License
  */
 
-namespace ymaker\banner\backend\helpers;
+namespace ymaker\banner\common\helpers;
 
 use Yii;
 use ymaker\banner\common\components\FileManagerInterface;
